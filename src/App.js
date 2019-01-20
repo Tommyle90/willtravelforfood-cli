@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -59,9 +59,6 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/trips' render={() => (
             <Trips flash={this.flash} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/createtrip' render={() => (
-            <CreateTrip flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/yelpsearch' render={() => (
             <SearchYelp flash={this.flash} user={user} />
