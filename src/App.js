@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Trips from './trips/components/Trips'
 import CreateTrip from './trips/components/CreateTrip'
+import SearchYelp from './yelp/SearchYelp'
 
 class App extends Component {
   constructor () {
@@ -60,7 +61,10 @@ class App extends Component {
             <Trips flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/createtrip' render={() => (
-            <Trips flash={this.flash} user={user} />
+            <CreateTrip flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/yelpsearch' render={() => (
+            <SearchYelp flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
