@@ -2,26 +2,37 @@ import React, { Component } from 'react'
 import apiUrl from '../../apiConfig'
 import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 
-class CreateTrip extends Component {
-
+class TripEdit extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      id: null,
+    this.state ={
       user: props.user,
-      trip: []
+      update: true,
+      trip: [],
+      id: ''
     }
   }
 
-  handleChange = event => {
-    const createTrip = { ...this.state.trip, [event.target.name]: event.target.value }
-    this.setState({ trip: createTrip })
+  componentDidMount () {
+    const id = this.props.match.params.id
+
+    fetch(`${apiUrl}/trips/${id}`)
+      .then(res => res.ok ? res : new Error())
+      .then(res => res.json())
+      .then(data => this.setState({ trip: data.trip }))
+      .catch(() => this.setState({ notFound: true }))
+  }
+
+  handleChange = (event) => {
+    const editedMovie = { ...this.state.trip, [event.target.name]: event.target.value }
+    this.setState({ trip: editedMovie })
   }
 
   handleSubmit = event => {
     event.preventDefault()
+
     const options = {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Token token=${this.state.user.token}`
@@ -30,18 +41,20 @@ class CreateTrip extends Component {
         trip: this.state.trip
       })
     }
-    fetch(`${apiUrl}/trips/`, options)
+    const id = this.props.match.params.id
+
+    fetch(`${apiUrl}/trips/${id}`, options)
       .then(res => res.ok ? res : new Error())
-      .then(res => res.json())
-      .then(data => this.setState({ trip: data.trip, id: data.trip.id }))
+      .then(data => this.setState({ updated: true }))
       .catch(console.error)
   }
 
   render () {
-    const {trip, id} = this.state
-    if (id) {
-      return <Redirect to={`/trips/${id}`}/>
+    const id = this.props.match.params.id
+    if (this.state.updated) {
+      return <Redirect to='/trips' />
     }
+    const { trip } = this.state
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
@@ -67,4 +80,4 @@ class CreateTrip extends Component {
   }
 }
 
-export default withRouter(CreateTrip)
+export default withRouter(TripEdit)

@@ -9,3 +9,13 @@ export const tripsIndex = (credentials) => {
     }
   })
 }
+
+export const tripShow = (credentials, id) => {
+  return fetch(apiUrl + `/trips/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token token=${credentials.user.token}`
+    }
+  })
+}

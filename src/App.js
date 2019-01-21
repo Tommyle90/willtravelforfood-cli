@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Trips from './trips/components/Trips'
 import CreateTrip from './trips/components/CreateTrip'
+import TripShow from './trips/components/TripShow'
 import SearchYelp from './yelp/SearchYelp'
 
 class App extends Component {
@@ -57,8 +58,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/trips' render={() => (
+          <AuthenticatedRoute user={user} exact path='/trips' render={() => (
             <Trips flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/trips/:id' render={() => (
+            <TripShow flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/yelpsearch' render={() => (
             <SearchYelp flash={this.flash} user={user} />
