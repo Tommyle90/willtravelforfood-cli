@@ -60,7 +60,7 @@ class CreateTrip extends Component {
             type='date'
             onChange={this.handleChange}
           />
-          <button className='badge badge-primary m-2' type='submit'>Submit</button>
+          <button className='btn btn-secondary btn-sm m-2' type='submit'>Submit</button>
         </form>
       </React.Fragment>
     )

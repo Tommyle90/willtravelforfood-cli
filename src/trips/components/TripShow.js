@@ -4,6 +4,7 @@ import apiUrl from '../../apiConfig'
 import {tripShow} from './api'
 import {Link, Redirect, Route} from 'react-router-dom'
 import TripEdit from './TripEdit'
+import CreateRestaurant from '../../restaurants/CreateRestaurant'
 
 
 class TripShow extends Component {
@@ -60,11 +61,16 @@ class TripShow extends Component {
     const { city, date } = trip
     return (
       <React.Fragment>
-        <h3>City: {city}</h3>
+        <h4>Trip to {city}</h4>
         <p>Date: {date}</p>
-        <TripEdit user={this.state.user}/>
+        <hr />
+        <div>
+          Edit Trip: <TripEdit user={this.state.user}/>
+        </div>
         <button className='btn btn-secondary btn-sm m-2'><Link to='/trips'>Back</Link></button>
-        <button className="badge badge-warning m-2" onClick={this.destroy}>Delete</button>
+        <button className="btn btn-secondary btn-sm m-2" onClick={this.destroy}>Delete</button>
+        <button className="btn btn-secondary btn-sm m-2">Add Restaurant</button>
+        <CreateRestaurant user={this.state.user}/>
       </React.Fragment>
     )
   }
