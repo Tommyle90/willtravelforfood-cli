@@ -57,6 +57,7 @@ class TripEdit extends Component {
     const { trip } = this.state
     return (
       <React.Fragment>
+        <label>Edit Trip</label>
         <form onSubmit={this.handleSubmit}>
           <label className='input-list m-2'>City</label>
           <input

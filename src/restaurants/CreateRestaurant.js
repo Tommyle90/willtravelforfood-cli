@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import apiUrl from '../apiConfig'
 import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 import { tripShow } from '../trips/components/api'
-import ShowRestaurant from './ShowRestaurant'
 
 class CreateRestaurant extends Component {
 
@@ -52,7 +51,18 @@ class CreateRestaurant extends Component {
     fetch(`${apiUrl}/restaurants`, options)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
-      .then(data => this.setState({ restaurant: data.restaurant, id: data.trip.id }))
+      .then(data => this.setState({ restaurant: data.restaurant }))
+      .catch(console.error)
+  }
+
+  handleDelete = event => {
+    const id = event.currentTarget.dataset.id
+    const options = {
+      method: 'DELETE'
+    }
+    fetch(`${apiUrl}/restaurants/${id}`, options)
+      .then(res => res.ok ? res : new Error())
+      .then(() => this.setState({ deleted:true }))
       .catch(console.error)
   }
   render () {
@@ -99,10 +109,6 @@ class CreateRestaurant extends Component {
           />
           <button className='input-list m-2' type='submit'>Submit</button>
         </form>
-        <ShowRestaurant
-          user={this.state.user}
-          trip={this.state.trip}
-        />
       </React.Fragment>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from './LogoMakr.png'
 
 import './Header.scss'
 
@@ -27,6 +28,7 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
+    <img className="icon-img" src={logo} alt="icon" width="90" height="90"/>
     <h1>Will Travel For Food</h1>
     <nav>
       { user && <span>Welcome, {user.email}</span>}

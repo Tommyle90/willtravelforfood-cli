@@ -22,6 +22,7 @@ const ShowRestaurant = (props) => {
           Top Dish: {restaurant.dish}
         </p>
       </div>
+      <button className='input-list m-2' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>
     </React.Fragment>
   ))
   return (

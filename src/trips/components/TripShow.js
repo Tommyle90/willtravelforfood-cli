@@ -5,6 +5,7 @@ import {tripShow} from './api'
 import {Link, Redirect, Route} from 'react-router-dom'
 import TripEdit from './TripEdit'
 import CreateRestaurant from '../../restaurants/CreateRestaurant'
+import ShowRestaurant from '../../restaurants/ShowRestaurant'
 
 
 class TripShow extends Component {
@@ -12,11 +13,19 @@ class TripShow extends Component {
     super(props)
 
     this.state = {
-      trip: [],
       user: props.user,
       deleted: false,
       notFound: false,
-      id: ''
+      id: '',
+      isHidden: true,
+      isHidden1: true,
+      trip: {
+        restaurants: []
+      },
+      restaurant: {
+        trip_id: props.match.params.id,
+        deleted: false,
+      }
     }
   }
 
@@ -45,6 +54,17 @@ class TripShow extends Component {
       .catch(console.error)
   }
 
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
+  toggleHidden1 () {
+    this.setState({
+      isHidden1: !this.state.isHidden1
+    })
+  }
   render () {
     const { trip, notFound, deleted }  = this.state
     if (notFound) {
@@ -63,13 +83,17 @@ class TripShow extends Component {
         <h2 className='input-list'>Trip to {city}</h2>
         <p>Date: {date}</p>
         <hr />
-        <div>
-          Edit Trip: <TripEdit user={this.state.user}/>
-        </div>
+        {!this.state.isHidden1 && <TripEdit user={this.state.user}/>}
+        {!this.state.isHidden && <CreateRestaurant user={this.state.user} />}
         <button className='input-list m-2'><Link to='/trips' className='input-list m-2'>Back</Link></button>
         <button className="input-list m-2" onClick={this.destroy}>Delete</button>
-        <button className="input-list m-2">Add Restaurant</button>
-        <CreateRestaurant user={this.state.user} />
+        <button className="input-list m-2" onClick={this.toggleHidden1.bind(this)}>Edit Trip Info</button>
+        <button className="input-list m-2" onClick={this.toggleHidden.bind(this)}>Add Restaurant</button>
+        <ShowRestaurant
+          user={this.state.user}
+          trip={this.state.trip}
+          handleDelete={this.handleDelete}
+        />
       </React.Fragment>
     )
   }

@@ -8,7 +8,7 @@ $charcoal: #ccc;
 .flash-success,
 .flash-warning,
 .flash-error {
-  border: 1px solid $charcoal;
+  border: 1px solid #57aad8;
   display: block;
   left: 25%;
   padding: 30px;
@@ -17,18 +17,21 @@ $charcoal: #ccc;
   top: 15%;
   width: 50%;
   z-index: 1;
+  font-family: 'Sacramento';
+  color: #57aad8;
+  font-size: 3rem;
 }
 
 .flash-success {
-  background-color: $success;
+  background-color: #bce3f9;
 }
 
 .flash-warning {
-  background-color: $warning;
+  background-color: #bce3f9;
 }
 
 .flash-error {
-  background-color: $error;
+  background-color: #bce3f9;
 }
 
 .auth-form {
@@ -65,12 +68,12 @@ h1 {
   font-family: 'Sacramento';
 }
 .container {
-  border-bottom: 1px solid #db9d83;
+  border-bottom: 1px solid #57aad8;
   line-height: 1.13;
   font-weight: 600;
   font-size: .83rem;
   transition: color .25s;
-  background-color: #f7ebe6;
+  background-color: #bce3f9;
 }
 .trip-list {
   width: 80%;
@@ -79,7 +82,7 @@ td{
   width: 50%;
 }
 .input-list {
-  color: #db9d83;
+  color: #57aad8;
 }
 h2 {
   font-weight: 600;

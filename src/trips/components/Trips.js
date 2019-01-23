@@ -11,7 +11,8 @@ class Trips extends Component {
     super(props)
     this.state = {
       user: props.user,
-      trips: []
+      trips: [],
+      isHidden: true,
     }
   }
 
@@ -21,6 +22,11 @@ class Trips extends Component {
       .then(res => res.json())
       .then(data => this.setState({ trips: data.trips }))
       .catch(console.error)
+  }
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
   }
 
   render () {
@@ -41,7 +47,8 @@ class Trips extends Component {
     })
     return (
       <React.Fragment>
-        <CreateTrip user={this.state.user}/>
+        <button className="input-list m-2" onClick={this.toggleHidden.bind(this)}>Create a Trip</button>
+        {!this.state.isHidden && <CreateTrip user={this.state.user}/>}
         <table className="table table-hover table-responsive trip-list">
           <thead>
             <tr>
