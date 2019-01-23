@@ -37,9 +37,7 @@ class Trips extends Component {
       return (
         <tbody className="tripslist" key={trip.id}>
           <tr>
-            <Link to={`trips/${trip.id}`}>
-              <td className='input-list'>{trip.city}</td>
-            </Link>
+            <td className='input-list'><Link to={`/trips/${trip.id}`}>{trip.city}</Link></td>
             <td>{trip.date}</td>
           </tr>
         </tbody>

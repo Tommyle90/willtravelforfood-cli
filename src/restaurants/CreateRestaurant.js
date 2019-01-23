@@ -11,6 +11,7 @@ class CreateRestaurant extends Component {
       user: props.user,
       deleted: false,
       notFound: false,
+      created: false,
       trip: {
         restaurants: []
       },
@@ -51,29 +52,20 @@ class CreateRestaurant extends Component {
     fetch(`${apiUrl}/restaurants`, options)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
-      .then(data => this.setState({ restaurant: data.restaurant }))
+      .then(data => this.setState({ restaurant: data.restaurant, created: true }))
       .catch(console.error)
   }
 
-  handleDelete = event => {
-    const id = event.currentTarget.dataset.id
-    const options = {
-      method: 'DELETE'
-    }
-    fetch(`${apiUrl}/restaurants/${id}`, options)
-      .then(res => res.ok ? res : new Error())
-      .then(() => this.setState({ deleted:true }))
-      .catch(console.error)
-  }
   render () {
-    const {trip, restaurant, deleted, notFound } = this.state
+    const {trip, restaurant, deleted, notFound, created } = this.state
     const id = this.props.match.params.id
-    if (notFound) {
-      return <Redirect to={`/trips/${id}`} />
-    } else if (!trip) {
+    if (!trip) {
       return <p>loading...</p>
     } else if (deleted) {
       return (<Redirect to={`/trips/${id}`} />
+      )
+    } else if (created) {
+      return (<Redirect to='/trips/' />
       )
     }
     return (

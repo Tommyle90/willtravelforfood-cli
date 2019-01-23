@@ -65,6 +65,16 @@ class TripShow extends Component {
       isHidden1: !this.state.isHidden1
     })
   }
+  handleDelete = event => {
+    const id = event.currentTarget.dataset.id
+    const options = {
+      method: 'DELETE'
+    }
+    fetch(`${apiUrl}/restaurants/${id}`, options)
+      .then(res => res.ok ? res : new Error())
+      .then(() => this.setState({ deleted:true }))
+      .catch(console.error)
+  }
   render () {
     const { trip, notFound, deleted }  = this.state
     if (notFound) {
@@ -72,9 +82,7 @@ class TripShow extends Component {
     } else if (!trip) {
       return <p>loading...</p>
     } else if (deleted) {
-      return (<Redirect to={{
-        pathname: '/trips'
-      }} />
+      return (<Redirect to='/trips' />
       )
     }
     const { city, date } = trip

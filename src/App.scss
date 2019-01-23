@@ -71,9 +71,10 @@ h1 {
   border-bottom: 1px solid #57aad8;
   line-height: 1.13;
   font-weight: 600;
-  font-size: .83rem;
+  font-size: .9rem;
   transition: color .25s;
   background-color: #bce3f9;
+  margin-top: 20px;
 }
 .trip-list {
   width: 80%;
@@ -86,5 +87,9 @@ td{
 }
 h2 {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.dtl-btn {
+  margin-bottom: 15px;
 }

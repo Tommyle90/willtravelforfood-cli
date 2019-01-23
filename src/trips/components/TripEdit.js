@@ -13,15 +13,15 @@ class TripEdit extends Component {
     }
   }
 
-  componentDidMount () {
-    const id = this.props.match.params.id
-
-    fetch(`${apiUrl}/trips/${id}`)
-      .then(res => res.ok ? res : new Error())
-      .then(res => res.json())
-      .then(data => this.setState({ trip: data.trip }))
-      .catch(() => this.setState({ notFound: true }))
-  }
+  // componentDidMount () {
+  //   const id = this.props.match.params.id
+  //
+  //   fetch(`${apiUrl}/trips/`)
+  //     .then(res => res.ok ? res : new Error())
+  //     .then(res => res.json())
+  //     .then(data => this.setState({ trip: data.trip }))
+  //     .catch(() => this.setState({ notFound: true }))
+  // }
 
   handleChange = (event) => {
     const editedMovie = { ...this.state.trip, [event.target.name]: event.target.value }
@@ -52,7 +52,7 @@ class TripEdit extends Component {
   render () {
     const id = this.props.match.params.id
     if (this.state.updated) {
-      return <Redirect to='/trips' />
+      return <Redirect to='/trips/' />
     }
     const { trip } = this.state
     return (

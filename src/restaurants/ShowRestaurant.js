@@ -8,7 +8,7 @@ const ShowRestaurant = (props) => {
   const tripIt = props.trip.restaurants.map(restaurant => (
     <React.Fragment key={restaurant.id}>
       <div className="restaurantlist">
-        <h2 className='input-list'>Restaurants</h2>
+        <h2 className='input-list m-1 rest'>Restaurants</h2>
         <p>
           Name: {restaurant.name}
         </p>
@@ -22,7 +22,7 @@ const ShowRestaurant = (props) => {
           Top Dish: {restaurant.dish}
         </p>
       </div>
-      <button className='input-list m-2' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>
+      <button className='input-list dtl-btn' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>
     </React.Fragment>
   ))
   return (

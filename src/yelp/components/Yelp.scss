@@ -61,11 +61,12 @@
 .SearchBar {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 25rem;
   margin-top: 30px;
+  height: 200px;
 }
 
 .SearchBar-sort-options ul {
