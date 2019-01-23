@@ -6,6 +6,7 @@ import {Link, Redirect, Route} from 'react-router-dom'
 import TripEdit from './TripEdit'
 import CreateRestaurant from '../../restaurants/CreateRestaurant'
 import ShowRestaurant from '../../restaurants/ShowRestaurant'
+import messages from './messages'
 
 
 class TripShow extends Component {
@@ -13,6 +14,7 @@ class TripShow extends Component {
     super(props)
 
     this.state = {
+      flash: props.flash,
       user: props.user,
       deleted: false,
       notFound: false,
@@ -47,11 +49,12 @@ class TripShow extends Component {
       }
     }
     const id = this.props.match.params.id
-
+    const {flash} = this.state
     fetch(`${apiUrl}/trips/${id}`, options)
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ deleted:true }))
-      .catch(console.error)
+      .then(() => flash(messages.deletedTrip, 'flash-success'))
+      .catch(() => flash(messages.unableToDelete, 'flash-error'))
   }
 
   toggleHidden () {
@@ -70,10 +73,12 @@ class TripShow extends Component {
     const options = {
       method: 'DELETE'
     }
+    const {flash} = this.state
     fetch(`${apiUrl}/restaurants/${id}`, options)
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ deleted:true }))
-      .catch(console.error)
+      .then(() => flash(messages.deletedRestaurant, 'flash-success'))
+      .catch(() => flash(messages.deleteError, 'flash-error'))
   }
   render () {
     const { trip, notFound, deleted }  = this.state
@@ -91,8 +96,8 @@ class TripShow extends Component {
         <h2 className='input-list'>Trip to {city}</h2>
         <p>Date: {date}</p>
         <hr />
-        {!this.state.isHidden1 && <TripEdit user={this.state.user}/>}
-        {!this.state.isHidden && <CreateRestaurant user={this.state.user} />}
+        {!this.state.isHidden1 && <TripEdit user={this.state.user} flash={this.state.flash}/>}
+        {!this.state.isHidden && <CreateRestaurant user={this.state.user} flash={this.state.flash}/>}
         <button className='input-list m-2'><Link to='/trips' className='input-list m-2'>Back</Link></button>
         <button className="input-list m-2" onClick={this.destroy}>Delete</button>
         <button className="input-list m-2" onClick={this.toggleHidden1.bind(this)}>Edit Trip Info</button>

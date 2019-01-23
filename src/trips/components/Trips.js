@@ -10,6 +10,7 @@ class Trips extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      flash: props.flash,
       user: props.user,
       trips: [],
       isHidden: true,
@@ -46,7 +47,7 @@ class Trips extends Component {
     return (
       <React.Fragment>
         <button className="input-list m-2" onClick={this.toggleHidden.bind(this)}>Create a Trip</button>
-        {!this.state.isHidden && <CreateTrip user={this.state.user}/>}
+        {!this.state.isHidden && <CreateTrip user={this.state.user} flash={this.state.flash}/>}
         <table className="table table-hover table-responsive trip-list">
           <thead>
             <tr>

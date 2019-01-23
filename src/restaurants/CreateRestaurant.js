@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import apiUrl from '../apiConfig'
 import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 import { tripShow } from '../trips/components/api'
+import messages from './messages'
 
 class CreateRestaurant extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
+      flash: props.flash,
       user: props.user,
       deleted: false,
       notFound: false,
@@ -49,11 +51,14 @@ class CreateRestaurant extends Component {
         restaurant: this.state.restaurant
       })
     }
+    const {flash} = this.state
     fetch(`${apiUrl}/restaurants`, options)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({ restaurant: data.restaurant, created: true }))
-      .catch(console.error)
+      .then(() => flash(messages.restaurantCreate, 'flash-success'))
+      .then(() => history.push('/trips'))
+      .catch(() => flash(messages.errorCreate, 'flash-error'))
   }
 
   render () {

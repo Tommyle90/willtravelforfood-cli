@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import apiUrl from '../../apiConfig'
 import { Route, Link, Redirect, withRouter } from 'react-router-dom'
+import messages from './messages'
 
 class CreateTrip extends Component {
 
@@ -9,6 +10,7 @@ class CreateTrip extends Component {
     this.state = {
       id: null,
       user: props.user,
+      flash: props.flash,
       trip: []
     }
   }
@@ -30,11 +32,13 @@ class CreateTrip extends Component {
         trip: this.state.trip
       })
     }
+    const {flash} = this.state
     fetch(`${apiUrl}/trips/`, options)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({ trip: data.trip, id: data.trip.id }))
-      .catch(console.error)
+      .then(() => flash(messages.createdTrip, 'flash-success'))
+      .catch(() => flash(messages.brokenTrip, 'flash-error'))
   }
 
   render () {

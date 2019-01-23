@@ -1,27 +1,19 @@
 import React, { Component } from 'react'
 import apiUrl from '../../apiConfig'
 import { Route, Link, Redirect, withRouter } from 'react-router-dom'
+import messages from './messages'
 
 class TripEdit extends Component {
   constructor (props) {
     super(props)
     this.state ={
       user: props.user,
+      flash: props.flash,
       update: true,
       trip: [],
       id: ''
     }
   }
-
-  // componentDidMount () {
-  //   const id = this.props.match.params.id
-  //
-  //   fetch(`${apiUrl}/trips/`)
-  //     .then(res => res.ok ? res : new Error())
-  //     .then(res => res.json())
-  //     .then(data => this.setState({ trip: data.trip }))
-  //     .catch(() => this.setState({ notFound: true }))
-  // }
 
   handleChange = (event) => {
     const editedMovie = { ...this.state.trip, [event.target.name]: event.target.value }
@@ -42,11 +34,12 @@ class TripEdit extends Component {
       })
     }
     const id = this.props.match.params.id
-
+    const {flash} = this.state
     fetch(`${apiUrl}/trips/${id}`, options)
       .then(res => res.ok ? res : new Error())
       .then(data => this.setState({ updated: true }))
-      .catch(console.error)
+      .then(() => flash(messages.editTrip, 'flash-success'))
+      .catch(() => flash(messages.editError, 'flash-error'))
   }
 
   render () {
