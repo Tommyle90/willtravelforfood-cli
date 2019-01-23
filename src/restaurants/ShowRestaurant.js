@@ -8,7 +8,7 @@ const ShowRestaurant = (props) => {
   const tripIt = props.trip.restaurants.map(restaurant => (
     <React.Fragment key={restaurant.id}>
       <div className="restaurantlist">
-        <h1 className='input-list'>Restaurants</h1>
+        <h2 className='input-list'>Restaurants</h2>
         <p>
           Name: {restaurant.name}
         </p>

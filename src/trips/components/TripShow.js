@@ -60,7 +60,7 @@ class TripShow extends Component {
     const { city, date } = trip
     return (
       <React.Fragment>
-        <h1 className='input-list'>Trip to {city}</h1>
+        <h2 className='input-list'>Trip to {city}</h2>
         <p>Date: {date}</p>
         <hr />
         <div>
