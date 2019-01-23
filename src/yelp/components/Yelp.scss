@@ -1,0 +1,139 @@
+.BusinessList {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 4.4rem 10%;
+}
+
+.Business {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 16.66rem;
+  margin: 0 .5rem 2.3rem .5rem;
+}
+
+.Business .image-container {
+  height: 16.66rem;
+  margin-bottom: 1rem;
+}
+
+.Business h2 {
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.Business-information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Business-information p {
+  font-size: .88rem;
+  font-weight: 300;
+  line-height: 1rem;
+}
+
+.Business-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Business-reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.Business-reviews h3 {
+  color: #57aad8;
+  font-weight: 600;
+}
+
+.Business-reviews .rating {
+  font-size: .88rem;
+  line-height: 1rem;
+}
+
+.SearchBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 25rem;
+  margin-top: 30px;
+  height: 200px;
+}
+
+.SearchBar-sort-options ul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.22rem;
+  color: #57aad8;
+}
+
+.SearchBar-sort-options li {
+  cursor: pointer;
+  width: 4.33rem;
+  border-bottom: 1px solid #57aad8;
+  // padding: 0 2.58rem .33rem 2.58rem;
+  line-height: 1.13;
+  text-align: center;
+  font-weight: 600;
+  font-size: .83rem;
+  transition: color .25s;
+  list-style:  none;
+  margin: 5px;
+}
+
+.SearchBar-sort-options li:hover {
+  color: #287aa8;
+}
+
+.SearchBar-sort-options li.active,
+.SearchBar-sort-options li.active:hover {
+  border-bottom: 1px solid #57aad8;
+  color: #287aa8;
+}
+
+.SearchBar-fields {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.88rem;
+}
+
+.SearchBar-fields input {
+  width: 21rem;
+  padding: .66rem 1rem;
+  margin-right: 2.22rem;
+  border: 1px solid #57aad8;
+  border-radius: 4px;
+  font-size: .77rem;
+  font-weight: 500;
+}
+
+.SearchBar-fields input:last-child {
+  margin-right: 0;
+}
+
+.SearchBar-submit {
+  text-align: center;
+}
+
+.SearchBar-submit a {
+  border-radius: 4px;
+  padding: .72rem 1.7rem;
+  background-color: #57aad8;
+  color: #57aad8;
+  font-weight: 600;
+  transition: background-color .5s;
+}
+
+.SearchBar-submit a:hover {
+  cursor: pointer;
+  background-color: #287aa8;
+}

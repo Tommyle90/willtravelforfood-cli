@@ -6,12 +6,20 @@ $charcoal: #bbb;
   display: flex;
   height: 100px;
   padding: 0 20px;
+  background-color: #bce3f9 ;
 
   a,
   span {
     font-size: 1.2em;
     margin: 0 15px;
   }
+  border-bottom: 1px solid #57aad8;
+  line-height: 1.13;
+  text-align: center;
+  font-weight: 600;
+  font-size: .83rem;
+  transition: color .25s;
+  color: #57aad8;
 }
 
 .main-header > nav {
@@ -30,6 +38,7 @@ $charcoal: #bbb;
 
     h1 {
       font-size: 2.5em;
+      font-family: 'Sacramento';
     }
   }
 }
@@ -47,4 +56,7 @@ $charcoal: #bbb;
       width: 80%;
     }
   }
+}
+.icon-img {
+  margin-right: 10px;
 }

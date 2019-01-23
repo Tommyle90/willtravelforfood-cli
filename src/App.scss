@@ -2,11 +2,13 @@ $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
-
+.container {
+  width: 85%;
+}
 .flash-success,
 .flash-warning,
 .flash-error {
-  border: 1px solid $charcoal;
+  border: 1px solid #57aad8;
   display: block;
   left: 25%;
   padding: 30px;
@@ -15,25 +17,28 @@ $charcoal: #ccc;
   top: 15%;
   width: 50%;
   z-index: 1;
+  font-family: 'Yellowtail';
+  color: #ffffff;
+  font-size: 3rem;
 }
 
 .flash-success {
-  background-color: $success;
+  background-color: #bce3f9;
 }
 
 .flash-warning {
-  background-color: $warning;
+  background-color: #bce3f9;
 }
 
 .flash-error {
-  background-color: $error;
+  background-color: #bce3f9;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 15% auto 0;
+  margin: 5% auto 0;
   max-width: 600px;
 
   h3,
@@ -45,4 +50,46 @@ $charcoal: #ccc;
     align-self: flex-end;
     max-width: 200px;
   }
+}
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.image-container img {
+  width: 100%;
+}
+h1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  font-family: 'Sacramento';
+}
+.container {
+  border-bottom: 1px solid #57aad8;
+  line-height: 1.13;
+  font-weight: 600;
+  font-size: .9rem;
+  transition: color .25s;
+  background-color: #bce3f9;
+  margin-top: 20px;
+}
+.trip-list {
+  width: 80%;
+}
+td{
+  width: 50%;
+}
+.input-list {
+  color: #57aad8;
+}
+h2 {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.dtl-btn {
+  margin-bottom: 15px;
 }

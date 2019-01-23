@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -8,6 +8,10 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import Trips from './trips/components/Trips'
+import CreateTrip from './trips/components/CreateTrip'
+import TripShow from './trips/components/TripShow'
+import SearchYelp from './yelp/SearchYelp'
 
 class App extends Component {
   constructor () {
@@ -30,7 +34,7 @@ class App extends Component {
     clearTimeout(this.messageTimeout)
 
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null
-    }), 2000)
+    }), 1500)
   }
 
   render () {
@@ -40,7 +44,7 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        
+
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -53,6 +57,15 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/trips' render={() => (
+            <Trips flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/trips/:id' render={() => (
+            <TripShow flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/yelpsearch' render={() => (
+            <SearchYelp flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
