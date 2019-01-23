@@ -2,7 +2,9 @@ $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
-
+.container {
+  width: 85%;
+}
 .flash-success,
 .flash-warning,
 .flash-error {
@@ -33,7 +35,7 @@ $charcoal: #ccc;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 15% auto 0;
+  margin: 5% auto 0;
   max-width: 600px;
 
   h3,
@@ -45,4 +47,36 @@ $charcoal: #ccc;
     align-self: flex-end;
     max-width: 200px;
   }
+}
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.image-container img {
+  width: 100%;
+}
+h1 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.container {
+  border-bottom: 1px solid #db9d83;
+  line-height: 1.13;
+  font-weight: 600;
+  font-size: .83rem;
+  transition: color .25s;
+  background-color: #f7ebe6;
+}
+.trip-list {
+  width: 80%;
+}
+td{
+  width: 50%;
+}
+.input-list {
+  color: #db9d83;
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Yelp from './Yelp.scss'
 
 const sortByOptions = {
   'Best Match': 'best_match',

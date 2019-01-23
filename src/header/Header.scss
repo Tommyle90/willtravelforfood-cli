@@ -6,12 +6,20 @@ $charcoal: #bbb;
   display: flex;
   height: 100px;
   padding: 0 20px;
+  background-color: #f7ebe6;
 
   a,
   span {
     font-size: 1.2em;
     margin: 0 15px;
   }
+  border-bottom: 1px solid #db9d83;
+  line-height: 1.13;
+  text-align: center;
+  font-weight: 600;
+  font-size: .83rem;
+  transition: color .25s;
+  color: #db9d83;
 }
 
 .main-header > nav {

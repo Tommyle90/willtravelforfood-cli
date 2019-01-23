@@ -1,4 +1,5 @@
 import React from 'react'
+import Yelp from './Yelp.scss'
 
 class Business extends React.Component {
   render(){

@@ -1,4 +1,4 @@
-
+import Yelp from './Yelp.scss'
 import React from 'react'
 
 import Business from './Business'

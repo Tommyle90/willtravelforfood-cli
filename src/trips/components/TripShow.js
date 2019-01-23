@@ -57,20 +57,19 @@ class TripShow extends Component {
       }} />
       )
     }
-
     const { city, date } = trip
     return (
       <React.Fragment>
-        <h4>Trip to {city}</h4>
+        <h1 className='input-list'>Trip to {city}</h1>
         <p>Date: {date}</p>
         <hr />
         <div>
           Edit Trip: <TripEdit user={this.state.user}/>
         </div>
-        <button className='btn btn-secondary btn-sm m-2'><Link to='/trips'>Back</Link></button>
-        <button className="btn btn-secondary btn-sm m-2" onClick={this.destroy}>Delete</button>
-        <button className="btn btn-secondary btn-sm m-2">Add Restaurant</button>
-        <CreateRestaurant user={this.state.user}/>
+        <button className='input-list m-2'><Link to='/trips' className='input-list m-2'>Back</Link></button>
+        <button className="input-list m-2" onClick={this.destroy}>Delete</button>
+        <button className="input-list m-2">Add Restaurant</button>
+        <CreateRestaurant user={this.state.user} />
       </React.Fragment>
     )
   }

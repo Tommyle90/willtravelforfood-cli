@@ -29,19 +29,28 @@ class Trips extends Component {
     }
     const trips = this.state.trips.map(trip => {
       return (
-        <li className="tripslist" key={trip.id}>
-          <Link to={`trips/${trip.id}`}>
-            <h4>{trip.city}</h4>
-            <p>{trip.date}</p>
-          </Link>
-        </li>
+        <tbody className="tripslist" key={trip.id}>
+          <tr>
+            <Link to={`trips/${trip.id}`}>
+              <td className='input-list'>{trip.city}</td>
+            </Link>
+            <td>{trip.date}</td>
+          </tr>
+        </tbody>
       )
     })
     return (
       <React.Fragment>
         <CreateTrip user={this.state.user}/>
-        <h1>Trips</h1>
-        <ul className='trips'>{trips}</ul>
+        <table className="table table-hover table-responsive trip-list">
+          <thead>
+            <tr>
+              <th className='input-list'>Travel To</th>
+              <th className='input-list'>Date</th>
+            </tr>
+          </thead>
+          {trips}
+        </table>
       </React.Fragment>
     )
   }

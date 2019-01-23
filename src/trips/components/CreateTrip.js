@@ -45,14 +45,14 @@ class CreateTrip extends Component {
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
-          <label className='badge badge-primary m-2'>City</label>
+          <label className='input-list m-2'>City</label>
           <input
             name='city'
             placeholder='city'
             value={trip.city}
             onChange={this.handleChange}
           />
-          <label className='badge badge-primary m-2'>Date</label>
+          <label className='input-list m-2'>Date</label>
           <input
             name='date'
             placeholder='Date'
@@ -60,8 +60,9 @@ class CreateTrip extends Component {
             type='date'
             onChange={this.handleChange}
           />
-          <button className='btn btn-secondary btn-sm m-2' type='submit'>Submit</button>
+          <button className='input-list m-2' type='submit'>Submit</button>
         </form>
+        <hr />
       </React.Fragment>
     )
   }
