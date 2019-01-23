@@ -32,7 +32,7 @@ class Trips extends Component {
 
   render () {
     if (this.state.trips.length == 0 ) {
-      return <CreateTrip user={this.state.user}/>
+      return <CreateTrip flash={this.state.flash} user={this.state.user}/>
     }
     const trips = this.state.trips.map(trip => {
       return (
