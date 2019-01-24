@@ -57,7 +57,6 @@ class CreateRestaurant extends Component {
       .then(res => res.json())
       .then(data => this.setState({ restaurant: data.restaurant, created: true }))
       .then(() => flash(messages.restaurantCreate, 'flash-success'))
-      .then(() => history.push('/trips'))
       .catch(() => flash(messages.errorCreate, 'flash-error'))
   }
 
