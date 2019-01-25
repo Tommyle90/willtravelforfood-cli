@@ -12,7 +12,6 @@ import messages from './messages'
 class TripShow extends Component {
   constructor (props) {
     super(props)
-
     this.state = {
       flash: props.flash,
       user: props.user,
