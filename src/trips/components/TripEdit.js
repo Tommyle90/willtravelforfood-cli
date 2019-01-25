@@ -4,13 +4,21 @@ import { Route, Link, Redirect, withRouter } from 'react-router-dom'
 import messages from './messages'
 
 class TripEdit extends Component {
+
+  initialTrip = () => {
+    return {
+      city: '',
+      date: ''
+    }
+  }
+
   constructor (props) {
     super(props)
     this.state ={
       user: props.user,
       flash: props.flash,
-      update: true,
-      trip: [],
+      updated: false,
+      trip: this.initialTrip(),
       id: ''
     }
   }
@@ -37,17 +45,18 @@ class TripEdit extends Component {
     const {flash} = this.state
     fetch(`${apiUrl}/trips/${id}`, options)
       .then(res => res.ok ? res : new Error())
-      .then(data => this.setState({ updated: true }))
+      .then(res => res.json())
+      .then(data => this.setState({ updated: true, trip: data.trip}))
       .then(() => flash(messages.editTrip, 'flash-success'))
       .catch(() => {
         flash(messages.editError, 'flash-error')
-        this.setState({ trip: []})
+        this.setState({ trip: this.initialTrip() })
       })
   }
 
   render () {
     const id = this.props.match.params.id
-    if (this.state.updated) {
+    if (this.state.updated === true) {
       return <Redirect to='/trips/' />
     }
     const { trip } = this.state
