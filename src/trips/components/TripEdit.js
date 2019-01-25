@@ -39,7 +39,10 @@ class TripEdit extends Component {
       .then(res => res.ok ? res : new Error())
       .then(data => this.setState({ updated: true }))
       .then(() => flash(messages.editTrip, 'flash-success'))
-      .catch(() => flash(messages.editError, 'flash-error'))
+      .catch(() => {
+        flash(messages.editError, 'flash-error')
+        this.setState({ trip: []})
+      })
   }
 
   render () {

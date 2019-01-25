@@ -5,13 +5,19 @@ import messages from './messages'
 
 class CreateTrip extends Component {
 
+  initialTrip = () => {
+    return {
+      city: '',
+      date: ''
+    }
+  }
   constructor (props) {
     super(props)
     this.state = {
       id: null,
       user: props.user,
       flash: props.flash,
-      trip: []
+      trip: this.initialTrip()
     }
   }
 
@@ -38,7 +44,10 @@ class CreateTrip extends Component {
       .then(res => res.json())
       .then(data => this.setState({ trip: data.trip, id: data.trip.id }))
       .then(() => flash(messages.createdTrip, 'flash-success'))
-      .catch(() => flash(messages.brokenTrip, 'flash-error'))
+      .catch(() => {
+        flash(messages.brokenTrip, 'flash-error')
+        this.setState({ trip: this.initialTrip() })
+      })
   }
 
   render () {
