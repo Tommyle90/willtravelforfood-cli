@@ -9,7 +9,6 @@ class CreateRestaurant extends Component {
   initialRest = () => {
     return {
       trip_id: this.props.match.params.id,
-      user_id: this.props.user.id,
       deleted: false,
       name: '',
       address: '',

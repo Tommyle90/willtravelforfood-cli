@@ -71,8 +71,12 @@ class TripShow extends Component {
     const options = {
       method: 'DELETE',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Token token=${this.state.user.token}`
-      }
+      },
+      body: JSON.stringify({
+        restaurant: {trip_id: this.state.restaurant.trip_id}
+      })
     }
     const {flash} = this.state
     fetch(`${apiUrl}/restaurants/${id}`, options)
