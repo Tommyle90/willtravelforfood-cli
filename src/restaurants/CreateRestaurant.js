@@ -6,6 +6,16 @@ import messages from './messages'
 
 class CreateRestaurant extends Component {
 
+  initialRest = () => {
+    return {
+      trip_id: this.props.match.params.id,
+      deleted: false,
+      name: '',
+      address: '',
+      telephone: '',
+      dish: '',
+    }
+  }
   constructor (props) {
     super(props)
     this.state = {
@@ -17,10 +27,7 @@ class CreateRestaurant extends Component {
       trip: {
         restaurants: []
       },
-      restaurant: {
-        trip_id: props.match.params.id,
-        deleted: false,
-      }
+      restaurant: this.initialRest()
     }
   }
 
@@ -57,7 +64,12 @@ class CreateRestaurant extends Component {
       .then(res => res.json())
       .then(data => this.setState({ restaurant: data.restaurant, created: true }))
       .then(() => flash(messages.restaurantCreate, 'flash-success'))
-      .catch(() => flash(messages.errorCreate, 'flash-error'))
+      .catch(() => {
+        flash(messages.errorCreate, 'flash-error')
+        this.setState({
+          restaurant: this.initialRest()
+        })
+      })
   }
 
   render () {
