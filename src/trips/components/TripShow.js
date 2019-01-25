@@ -44,7 +44,6 @@ class TripShow extends Component {
     const options = {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json',
         'Authorization': `Token token=${this.state.user.token}`
       }
     }
@@ -71,7 +70,10 @@ class TripShow extends Component {
   handleDelete = event => {
     const id = event.currentTarget.dataset.id
     const options = {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${this.state.user.token}`
+      }
     }
     const {flash} = this.state
     fetch(`${apiUrl}/restaurants/${id}`, options)
