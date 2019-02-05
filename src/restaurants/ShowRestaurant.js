@@ -6,9 +6,9 @@ import apiUrl from '../apiConfig'
 import MUIDataTable from 'mui-datatables'
 
 const ShowRestaurant = (props) => {
-  const columns = ['Name', 'Address', 'Telephone', 'Dish', 'Delete']
+  const columns = ['Restaurant Name', 'Address', 'Telephone', 'Must Try Dish', 'Delete']
   const options = {
-    responsive: 'scroll',
+    responsive: 'stacked',
     selectableRows: false,
     filter: false
   }
@@ -19,7 +19,8 @@ const ShowRestaurant = (props) => {
       restaurant.address,
       restaurant.telephone,
       restaurant.dish,
-      <button key={restaurant.id} className='input-list dtl-btn' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>]
+      <button key={restaurant.id} className='input-list dtl-btn' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>
+    ]
   ))
   return (
     <MUIDataTable
