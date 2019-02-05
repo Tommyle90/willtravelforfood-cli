@@ -9,4 +9,11 @@ body {
 }
 html {
     background-color: #bce3f9 ;
+    background-image: url("https://i.imgur.com/YIRMQHI.jpg") ;
+    background-position: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-blend-mode: lighten;
 }
