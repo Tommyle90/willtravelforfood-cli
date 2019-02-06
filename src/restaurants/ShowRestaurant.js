@@ -3,32 +3,32 @@ import {withRouter} from 'react-router'
 import {Link, Redirect, Route} from 'react-router-dom'
 import {restaurantIndex} from './api'
 import apiUrl from '../apiConfig'
+import MUIDataTable from 'mui-datatables'
 
 const ShowRestaurant = (props) => {
+  const columns = ['Restaurant Name', 'Address', 'Telephone', 'Must Try Dish', 'Delete']
+  const options = {
+    responsive: 'stacked',
+    selectableRows: false,
+    filter: false
+  }
+  let data = {}
   const tripIt = props.trip.restaurants.map(restaurant => (
-    <React.Fragment key={restaurant.id}>
-      <div className="restaurantlist">
-        <h2 className='input-list m-1 rest'>Restaurants</h2>
-        <p>
-          Name: {restaurant.name}
-        </p>
-        <p>
-          Address: {restaurant.address}
-        </p>
-        <p>
-          Telephone: {restaurant.telephone}
-        </p>
-        <p>
-          Top Dish: {restaurant.dish}
-        </p>
-      </div>
-      <button className='input-list dtl-btn' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>
-    </React.Fragment>
+    data = [
+      restaurant.name,
+      restaurant.address,
+      restaurant.telephone,
+      restaurant.dish,
+      <button key={restaurant.id} className='input-list dtl-btn' type='submit' data-id={restaurant.id} onClick={props.handleDelete}>Delete</button>
+    ]
   ))
   return (
-    <React.Fragment>
-      {tripIt}
-    </React.Fragment>
+    <MUIDataTable
+      title={'Restaurants'}
+      data={tripIt}
+      columns={columns}
+      options={options}
+    />
   )
 }
 
